@@ -1,0 +1,9 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=4869
+
+So if you're a frequent user of Vim's hlsearch feature, you may find yourself wishing that you could highlight multiple searches. Well Vim has support for this in its :match command, but doesn't make that particularly easy to use.
+
+This plugin aims to put the full power of Vim's :match feature at the user's fingertips in the easiest way possible: as an extension of the existing search feature that you know and love.
+
+You just search for something, and then pin that search with one of the SearchMatchN commands or key mappings.
+
+https://github.com/jcorbin/vim-searchmatch
