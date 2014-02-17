@@ -9,7 +9,7 @@ endif
 let g:loaded_searchmatch = 1
 
 function! s:cased_regex(regex)
-  return (&ignorecase ?  '\c' : '\C') . a:regex
+  return (&ignorecase ? '\c' : '\C') . a:regex
 endfunction
 
 if !exists("s:used_1match")
@@ -78,14 +78,19 @@ function! s:reset_match()
   endif
 endfunction
 
-command! SearchMatch1     :call <SID>set_match(1, <SID>cased_regex(@/))
-command! SearchMatch2     :call <SID>set_match(2, <SID>cased_regex(@/))
-command! SearchMatch3     :call <SID>set_match(3, <SID>cased_regex(@/))
-command! SearchMatchReset :call <SID>reset_match()
+command! Searchmatch1     :call <SID>set_match(1, <SID>cased_regex(@/))
+command! Searchmatch2     :call <SID>set_match(2, <SID>cased_regex(@/))
+command! Searchmatch3     :call <SID>set_match(3, <SID>cased_regex(@/))
+command! SearchmatchReset :call <SID>reset_match()
+
+nmap <Plug>Searchmatch1     :Searchmatch1<CR>
+nmap <Plug>Searchmatch2     :Searchmatch2<CR>
+nmap <Plug>Searchmatch3     :Searchmatch3<CR>
+nmap <Plug>SearchmatchReset :SearchmatchReset<CR>
 
 if !exists("g:searchmatch_nomap") && mapcheck("<leader>/", "n") == ""
-  nmap <leader>/  :SearchMatch1<CR>
-  nmap <leader>2/ :SearchMatch2<CR>
-  nmap <leader>3/ :SearchMatch3<CR>
-  nmap <leader>-/ :SearchMatchReset<CR>
+  nmap <leader>/1 <Plug>Searchmatch1
+  nmap <leader>/2 <Plug>Searchmatch2
+  nmap <leader>/3 <Plug>Searchmatch3
+  nmap <leader>/- <Plug>SearchmatchReset
 endif
